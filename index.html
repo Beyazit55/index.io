@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta class="description" content="">
+    <meta class="author" content="">
+    <title>Freelancer - Start Bootstrap Tamplate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 6px;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+section {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    text-align: center;
+}
+.btn-large{
+    font-size: 2rem;
+    padding: 2.2rem 1.6rem;
+}
+.btn{
+    margin-top: 2rem;
+    font-weight: 400;
+    display: inline-block;
+    color: #fff;
+    border: 2px solid white;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    transition: .5s;
+}
+.btn-social{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    line-height: 2rem;
+}
+.btn-outline{
+    color: #fff;
+    border-color: #fff;
+    background-color: transparent;
+    
+}
+.btn-outline:hover{
+    color: #212529;
+    background-color: #fff;
+    transition: .5s;
+}
+.btn-primary{
+    background-color: #1abc9b;
+    border-color: #1abc9b ;
+    padding: 1.2rem 1rem;
+    color: #fff;
+}
+.btn-primary:hover{
+    background-color: #128f76;
+    border-color: #128f76;
+}
+.img-fluid {
+    max-width: 256px;
+    height: auto;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.col {
+    float: left;
+    width: 100%;
+    padding: 1rem;
+
+}
+@media (min-width:576px){
+    .container {
+        max-width: 540px;
+    }
+    html{
+        font-size: 7px;
+    }
+}
+@media (min-width:768px){
+    .container{
+        max-width: 720px;
+    }
+    html{
+        font-size: 8px;
+    }
+    .col{
+        width: 50%;
+    }
+}
+@media (min-width:992px){
+    .container{
+        max-width: 960;
+    }
+    html{
+        font-size: 9px;
+    }
+    .col{
+        width: 33.333%;
+    }
+    
+}
+@media (min-width:1200px){
+    .container{
+        max-width: 1140px;
+    }
+    html{
+        font-size: 10px;
+    }
+    
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+nav {
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #2c3e4f;
+    color: white;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    position: fixed;
+    z-index: 500;
+}
+
+#logo-box {
+    float: left;
+    padding-top: 0.5rem;
+}
+
+#logo-box .logo {
+    color: #fff;
+    font-weight: 700;
+    font-size: 2.8rem;
+}
+
+#nav-links {
+    float: right;
+}
+
+#nav-links .nav-item {
+    float: left;
+    margin: 0.5rem;
+}
+
+#nav-links .nav-link {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: block;
+    padding: 1.6rem;
+    letter-spacing: 0.1rem;
+    transition: color 0.4s;
+}
+
+#nav-links .nav-link:hover {
+    color: #1abc9b;
+}
+
+#nav-links .nav-icon{
+    display: none;
+}
+@media (max-width: 992px){
+    #logo-box{
+        float: none;
+        text-align: left;
+    }
+    #nav-links{
+        float: none;
+    }
+    #nav-links .nav-link{
+        font-size: 2rem;
+        padding-left: 0;
+    }
+    #nav-links .nav-item{
+        float: none;
+        text-align: left;
+    }
+    #nav-links .nav-icon{
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 5px;
+        font-size: 3rem;
+    }
+    #nav-links.responsive li:not(:first-child){
+        display: none;
+    }
+}
+
+header {
+    background-color: #1abc9b;
+    height: 700px;
+    padding-top: calc(106px + 7rem);
+    text-align: center;
+}
+
+header h1 {
+    color: #fff;
+    font-size: 6rem;
+
+}
+
+header h2 {
+    color: white;
+    font-size: 2.4rem;
+    font-family: 'Lato';
+    font-weight: 300;
+}
+
+hr.star-light {
+    border-color: #fff;
+}
+
+hr.star-dark {
+    border-color: #2d3d4f;
+
+}
+
+.star-light,
+.star-dark {
+    border: none;
+    border-top: 0.4rem solid;
+    border-radius: 10px;
+    max-width: 25rem;
+    margin: 2.5rem auto;
+    overflow: visible;
+    height: 0;
+}
+
+.star-light::after {
+    color: #fff;
+    background-color: #1abc9b;
+}
+
+.star-dark::after {
+    color: #2d3d4f;
+    background-color: #fff;
+
+}
+
+.star-light::after,
+.star-dark::after {
+    content: "\2605";
+    font-weight: 900;
+    font-size: 3.2rem;
+    position: relative;
+    top: -28px;
+    padding: 0 8px;
+
+}
+
+
+
+#portfolio h2 {
+    font-size: 4.8rem;
+    color: #2d3d4f;
+}
+
+.img-fluid-p {
+    max-width: 100%;
+    height: auto;
+
+}
+
+
+
+.portfolio-item {
+    position: relative;
+
+}
+
+.portfolio-item img {
+    display: block;
+    border-radius: 13px;
+}
+
+.img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1abc9b;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.img-overlay .icon {
+    color: #fff;
+    font-size: 8rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.portfolio-item:hover .img-overlay {
+    opacity: 0.8;
+    border-radius: 13px;
+}
+
+#about {
+    background-color: #1abc9b;
+    color: #fff;
+
+}
+
+#about h2 {
+    font-size: 4.8rem;
+}
+
+#about-text {
+    text-align: left;
+}
+
+#about-text .left {
+    float: none;
+    width: 100%;
+    padding-right: 5px;
+    padding-left: 25px;
+}
+
+#about-text .right {
+    float: none;
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 5px;
+
+}
+
+#about-text .text {
+    font-size: 2rem;
+
+}
+@media (min-width: 992px){
+    #about-text .left{
+        float: left;
+        width: 50%;
+        padding-right: 10px;
+        padding-left: 210px;
+    }
+    #about-text .right{
+        float: right;
+        width: 50%;
+        padding-right: 210px;
+        padding-left: 10px;
+    }
+}
+
+#contact h2{
+    font-size: 4.8rem;
+    color: #2c3e50;
+}
+#contact-form{
+    width: 70%;
+    margin: 0 auto;
+    text-align: left;
+
+}
+.form-group{
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 3rem;
+    margin-bottom: 4rem;
+}
+.form-group input, .form-group textarea{
+    border: none;
+    width: 100%;
+    display: block;
+    font-size: 2.4rem;
+}
+.form-group input:focus{
+    outline: 0;
+}
+.form-group textarea:focus{
+    outline: 0;
+}
+
+footer{
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    background-color: #2c3e4f;
+    color: #fff;
+    text-align: center;
+}
+footer h4{
+    font-size: 2.4rem;
+
+}
+footer p{
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+footer li{
+    display: inline-block;
+    margin-right: 1rem;
+}
+.copyright{
+    background-color: #19262f;
+    padding-top: 2.4rem;
+    padding-bottom: 2.4rem;
+    color: #fff;
+    text-align: center;
+}
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container clearfix">
+            <div id="logo-box">
+                <a href="/" class="logo text-uppercase">
+                    Start Bootstrap
+                </a>
+            </div>
+
+            <div id="nav-links" class="responsive">
+                <ul>
+                    <li class="nav-item text-uppercase nav-icon">
+                        <a href="#" class="nav-link">
+                            <i class="fa-solid fa-bars"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item text-uppercase">
+                        <a href="#" class="nav-link">
+                            Portfolio
+                        </a>
+                    </li>
+                    <li class="nav-item text-uppercase">
+                        <a href="#" class="nav-link">
+                            About
+                        </a>
+                    </li>
+                    <li class="nav-item text-uppercase">
+                        <a href="#" class="nav-link">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+    <header>
+        <div class="container">
+            <img id="profile-image" class="img-fluid" src="avatar.png" alt="">
+            <h1 class="text-uppercase">Start Bootstrap</h1>
+            <hr class="star-light">
+            <h2>Graphic Artist - Web designer - Illustrator</h2>
+        </div>
+    </header>
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="text-uppercase">
+                Portfolio
+            </h2>
+            <hr class="star-dark">
+
+            <div id="portfolio-images" class="clearfix">
+
+                <div class="col">
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <img class="img-fluid-p" src="cabin.png" alt="">
+                            <div class="img-overlay">
+                                <div class="icon">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <img class="img-fluid-p" src="cake.png" alt="">
+                            <div class="img-overlay">
+                                <div class="icon">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <img class="img-fluid-p" src="circus.png" alt="">
+                            <div class="img-overlay">
+                                <div class="icon">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <img class="img-fluid-p" src="game.png" alt="">
+                            <div class="img-overlay">
+                                <div class="icon">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <img class="img-fluid-p" src="safe.png" alt="">
+                            <div class="img-overlay">
+                                <div class="icon">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <img class="img-fluid-p" src="submarine.png" alt="">
+                            <div class="img-overlay">
+                                <div class="icon">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
+    <section id="about">
+        <h2 class="text-uppercase">
+            about
+        </h2>
+        <hr class="star-light">
+        <div id="about-text" class="clearfix">
+            <div class="left">
+                <p class="text">
+                    Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete
+                    source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy
+                    customization.
+                </p>
+            </div>
+            <div class="right">
+                <p class="text">
+                    You can create your own custom avatar for the masthead, change the icon in the dividers, and add
+                    your email address to the contact form to make it fully functional!
+                </p>
+            </div>
+        </div>
+        <button class="btn btn-outline btn-large">
+            <i class="fa-sharp fa-solid fa-download"></i>
+            Download Now!
+        </button>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-uppercase">
+                Contact Me
+            </h2>
+            <hr class="star-dark">
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="phone" placeholder="Phone">
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="5" placeholder="Message"></textarea>
+                </div>
+                <button class="btn  btn-primary">
+                    Send
+                </button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="container clearfix">
+            <div class="col">
+                <h4 class="text-uppercase">
+                    Location
+                </h4>
+                <p>2215 John Daniel Drive Clark, MO 65243</p>
+            </div>
+            <div class="col">
+                <h4 class="text-uppercase">
+                    Around the web
+                </h4>
+                <ul>
+                    <li>
+                        <button class="btn btn-outline btn-social">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn btn-outline btn-social">
+                            <i class="fa-brands fa-twitter"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn btn-outline btn-social">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn btn-outline btn-social">
+                            <i class="fa-brands fa-dribbble"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4 class="text-uppercase">
+                    About Freelancer
+                </h4>
+                <p>Freelance is a free to use, MIT licensed Bootstrap theme created by Start Bootstrap .</p>
+            </div>
+        </div>
+    </footer>
+    <div class="copyright">
+        <div class="container">
+            <small>Copyright © Your Website 2021</small>
+        </div>
+    </div>
+
+   
+</body>
+
+</html>
