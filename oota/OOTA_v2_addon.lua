@@ -7,11 +7,10 @@
 --   ekranac    -> Tavan kapaklari acilir, 4 ekran iner
 --   ekrankapat -> Ekranlar yukari cekilir, kapaklar kapanir
 --   robotselam -> Resepsiyon robotu karsilama anonsu yapar
---   ootaburaya -> Tum yapiyi komutu kullanan oyuncunun bastigi partin
---                 hemen ustune tasir (oyuncu giris kapisinin onunde kalir)
--- Ilk kurulum konumu: X 1400..1660, Z -100..116. Elle kaydirmak icin OX, OY, OZ.
+-- Konum: yapinin merkezi (ana koridor zemini) X=10, Y=10, Z=10 noktasina kurulur.
+-- Zemin ust yuzeyi Y=10'dadir. Baska yere almak icin OX, OY, OZ degistir.
 -- ============================================================
-local OX, OY, OZ = 0, 0, 0
+local OX, OY, OZ = -1490, 0, 10 -- veri X=1500,Y=10,Z=0 merkezli; bu kaydirma merkezi (10, 10, 10) yapar
 -- Veri GitHub'dan (herkese acik repo) indirilir; olmazsa paste.rs yedegi denenir.
 local GH = "https://raw.githubusercontent.com/Beyazit55/index.io/oota-harita/oota/"
 local GM = "https://raw.githubusercontent.com/Beyazit55/index.io/main/oota/"
@@ -388,67 +387,17 @@ for _, ax in ipairs({-10, -2}) do
 	end)
 end
 
--- ================= 4) move whole build onto the part under a player =================
-local ENTRY_Z = 120 -- oyuncu, giris sundurmasinin hemen onunde durur
-local moving = false
-local function moveTo(player)
-	if moving or busy then return end
-	moving = true
-	local ok, err = pcall(function()
-		local char = player.Character
-		local hrp = char:FindFirstChild("HumanoidRootPart")
-		local pos = hrp.Position
-		local floorY = nil
-		pcall(function()
-			local rp = RaycastParams.new()
-			rp.FilterType = Enum.RaycastFilterType.Exclude
-			local ex = {char}
-			for i = 1, #robots do ex[#ex + 1] = robots[i].model end
-			for i = 1, #allParts do ex[#ex + 1] = allParts[i] end
-			rp.FilterDescendantsInstances = ex
-			local hit = workspace:Raycast(pos, Vector3.new(0, -80, 0), rp)
-			if hit then floorY = hit.Position.Y end
-		end)
-		if not floorY then
-			local hh = 2
-			pcall(function() hh = char:FindFirstChildOfClass("Humanoid").HipHeight end)
-			floorY = pos.Y - hrp.Size.Y / 2 - hh
-		end
-		local dx = pos.X - (LX + OX)
-		local dy = floorY + 0.05 - (LY + OY)
-		local dz = pos.Z - (ENTRY_Z + OZ)
-		local d = Vector3.new(dx, dy, dz)
-		OX, OY, OZ = OX + dx, OY + dy, OZ + dz
-		for i = 1, #allParts do
-			local p = allParts[i]
-			pcall(function() p.CFrame = p.CFrame + d end)
-			if i % 150 == 0 then task.wait() end
-		end
-		for gi, g in pairs(groups) do
-			for i = 1, #g.base do
-				local b = g.base[i]
-				b[1], b[2], b[3] = b[1] + dx, b[2] + dy, b[3] + dz
-			end
-			if screenState == "acik" then setAlpha(g, 1) else setAlpha(g, 0) end
-		end
-		for k = 1, #robots do pcall(placeRobot, robots[k], 0) end
-	end)
-	moving = false
-	if ok then log("OoTA tasindi.") else log("Tasima hatasi:", tostring(err)) end
-end
-
--- ================= 5) commands =================
+-- ================= 4) commands =================
 local cmdOk = pcall(function()
 	registerAddonCommand("ekranac", "Toplanti Ekranlarini Ac", function(player) openScreens() end)
 	registerAddonCommand("ekrankapat", "Toplanti Ekranlarini Kapat", function(player) closeScreens() end)
-	registerAddonCommand("ootaburaya", "OoTA'yi Buraya Tasi", function(player) moveTo(player) end)
 	registerAddonCommand("robotselam", "Robot Karsilama Anonsu", function(player)
 		say("OoTA tesisine hos geldiniz. Lutfen guvenlik prosedurlerine uyun.", true)
 	end)
 end)
 log("Ekranlar ve robotlar hazir. Robot:", #robots, "Komutlar:", cmdOk)
 
--- ================= 6) patrol loop =================
+-- ================= 5) patrol loop =================
 local SPEED = 4
 local DT = 0.05
 local summaryDone = false
